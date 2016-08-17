@@ -1,0 +1,85 @@
+html body{
+  color: $white;
+  font-family: 'Roboto', sans-serif;
+}
+#full_bg {
+    height: auto;
+    left: 0;
+    min-height: 100%;
+    min-width: 1024px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+// Sidebar container
+.sidebar{
+  background:$transparent;
+  height:100vh;
+  padding:0px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+// Logo container within sidebar
+> .logo{
+  width:100%;
+  text-align: center;
+  padding:10px;
+  > img{
+    width:100%;
+  }
+  }
+
+// Sidebar menu
+> .menu{
+  width:100%;
+  padding-top:15px;
+  > ul {
+    width:100%;
+    list-style-type: none;
+    padding-left:0;
+    > li {
+      text-align: center;
+      padding:5px;
+      padding-bottom: 15px;
+      text-transform: uppercase;
+      font-size:12px;
+      font-weight:300;
+      > i.material-icons{
+        font-size:40px;
+
+
+      }
+    }
+  }
+
+}
+}
+//devices
+.light{
+  text-align: center;
+  color:rgba(255,255,255,0.7);
+  > .active{
+    color:rgba(190, 162, 107, 0.7);
+  }
+  > i {
+    font-size:60px;
+    padding-bottom:5px;
+    color:rgba(255,255,255,0.8);
+    display:block;
+  }
+  > .devicename{
+    font-weight:100;
+    text-transform: uppercase;
+  }
+}
+.btn:focus, .btn:active:focus, .btn.active:focus{
+  outline-color: transparent;
+  outline-style: none;
+}
+
+// Settings
+.zone-item{
+  font-size:20px;
+  font-weight:200;
+  text-transform: uppercase;
+  padding:15px;
+}
