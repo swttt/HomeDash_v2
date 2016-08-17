@@ -18,6 +18,8 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.0.0/lodash.min.js"></script>
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/restangular/1.3.1/restangular.min.js"></script>
+  <script src="lib/scripts/hammer.min.js"></script>
+  <script src="lib/scripts/angular.hammer.min.js"></script>
   <script src="lib/scripts/app.js"></script>
   <script src="lib/scripts/controllers.js"></script>
 </head>
@@ -48,11 +50,9 @@
             <div class="panel panel-clear">
               <div class="panel-body">
                 <div style="" class="col-sm-2 light" ng-repeat="device in devicelist" ng-if="device.class == 'light' || device.class == 'socket'">
-                  <div  id="device-light" style="margin-bottom:10px;margin-top:5px;background:rgba(255,255,255,0.5);background-size: cover;-webkit-mask-size: contain;-webkit-mask-position: center center;-webkit-mask-repeat: no-repeat;width:100%;height:50px;-webkit-mask-image: url(http://192.168.2.72{{device.icon}});"> </div>
+                  <div ng-if="device.state.onoff == false" hm-tap="tap(device.id, true)" id="device-light" style="margin-bottom:10px;margin-top:5px;background:rgba(255,255,255,0.2);background-size: cover;-webkit-mask-size: contain;-webkit-mask-position: center center;-webkit-mask-repeat: no-repeat;width:100%;height:50px;-webkit-mask-image: url(http://192.168.2.72{{device.icon}});"> </div>
+                  <div ng-if="device.state.onoff == true" hm-tap="tap(device.id, false)" id="device-light" style="margin-bottom:10px;margin-top:5px;background:rgba(255,255,255,0.9);background-size: cover;-webkit-mask-size: contain;-webkit-mask-position: center center;-webkit-mask-repeat: no-repeat;width:100%;height:50px;-webkit-mask-image: url(http://192.168.2.72{{device.icon}});"> </div>
                   <span class="devicename">{{device.name}}</span>
-
-                  <span ngif="device.capability.dim">{{device.state.dim}}</span>
-                  <span ngif="device.capability.onoff">{{device.state.onoff}}</span>
                 </div>
               </div>
             </div>
