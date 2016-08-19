@@ -5817,6 +5817,9 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important; } }
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important; }
+
 html body {
   color: #fff;
   font-family: 'Roboto', sans-serif; }
@@ -5882,6 +5885,12 @@ html body {
   font-weight: 200;
   text-transform: uppercase;
   padding: 15px; }
+
+.on {
+  background: rgba(255, 255, 255, 0.8); }
+
+.off {
+  background: rgba(255, 255, 255, 0.2); }
 
 .slider {
   display: inline-block;

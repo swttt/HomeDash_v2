@@ -49,9 +49,9 @@
           <div class="col-sm-12">
             <div class="panel panel-clear">
               <div class="panel-body">
-                <div style="" class="col-sm-2 light" ng-repeat="device in devicelist" ng-if="device.class == 'light' || device.class == 'socket'">
-                  <div ng-if="device.state.onoff == false" hm-tap="tap(device.id, true)" id="device-light" style="margin-bottom:10px;margin-top:5px;background:rgba(255,255,255,0.2);background-size: cover;-webkit-mask-size: contain;-webkit-mask-position: center center;-webkit-mask-repeat: no-repeat;width:100%;height:50px;-webkit-mask-image: url(http://192.168.2.72{{device.icon}});"> </div>
-                  <div ng-if="device.state.onoff == true" hm-tap="tap(device.id, false)" id="device-light" style="margin-bottom:10px;margin-top:5px;background:rgba(255,255,255,0.9);background-size: cover;-webkit-mask-size: contain;-webkit-mask-position: center center;-webkit-mask-repeat: no-repeat;width:100%;height:50px;-webkit-mask-image: url(http://192.168.2.72{{device.icon}});"> </div>
+                <div style="" class="col-sm-2 light" ng-repeat="device in devicelist track by device.id" ng-if="device.class == 'light' || device.class == 'socket'">
+                  <div ng-if="device.state.onoff == false"  hm-tap="tap(device.id, true)" id="device-light" style="margin-bottom:10px;margin-top:5px;background:rgba(255,255,255,0.2);background-size: cover;-webkit-mask-size: contain;-webkit-mask-position: center center;-webkit-mask-repeat: no-repeat;width:100%;height:50px;-webkit-mask-image: url(http://192.168.2.72{{device.icon}});"> </div>
+                  <div ng-if="device.state.onoff == true"  hm-tap="tap(device.id, false)" id="device-light" style="margin-bottom:10px;margin-top:5px;background:rgba(255,255,255,0.9);background-size: cover;-webkit-mask-size: contain;-webkit-mask-position: center center;-webkit-mask-repeat: no-repeat;width:100%;height:50px;-webkit-mask-image: url(http://192.168.2.72{{device.icon}});"> </div>
                   <span class="devicename">{{device.name}}</span>
                 </div>
               </div>
