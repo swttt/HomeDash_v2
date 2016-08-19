@@ -13,11 +13,9 @@
   <!-- Angular must be included in the head so that the templates work properly -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
   <script src="lib/scripts/ui-bootstrap-tpls-2.0.1.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-resource.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.0.0/lodash.min.js"></script>
-  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/restangular/1.3.1/restangular.min.js"></script>
   <script src="lib/scripts/hammer.min.js"></script>
   <script src="lib/scripts/angular.hammer.min.js"></script>
   <script src="lib/scripts/app.js"></script>
@@ -40,7 +38,7 @@
               <li><i class="material-icons">assessment</i> Sensors</li>
             </ul>
           </div>
-          <a class="btn btn-clear" ng-click="open('lg')" style="position:absolute;bottom:10px;"><i class="material-icons">settings</i></a>
+          <a class="btn btn-clear" ng-click="openSettings()" style="position:absolute;bottom:10px;"><i class="material-icons">settings</i></a>
         </div>
         <div class="col-sm-11">
           <div class="col-sm-12 header">
@@ -49,9 +47,9 @@
           <div class="col-sm-12">
             <div class="panel panel-clear">
               <div class="panel-body">
-                <div style="" class="col-sm-2 light" ng-repeat="device in devicelist track by device.id" ng-if="device.class == 'light' || device.class == 'socket'">
-                  <div ng-if="device.state.onoff == false"  hm-tap="tap(device.id, true)" id="device-light" style="margin-bottom:10px;margin-top:5px;background:rgba(255,255,255,0.2);background-size: cover;-webkit-mask-size: contain;-webkit-mask-position: center center;-webkit-mask-repeat: no-repeat;width:100%;height:50px;-webkit-mask-image: url(http://192.168.2.72{{device.icon}});"> </div>
-                  <div ng-if="device.state.onoff == true"  hm-tap="tap(device.id, false)" id="device-light" style="margin-bottom:10px;margin-top:5px;background:rgba(255,255,255,0.9);background-size: cover;-webkit-mask-size: contain;-webkit-mask-position: center center;-webkit-mask-repeat: no-repeat;width:100%;height:50px;-webkit-mask-image: url(http://192.168.2.72{{device.icon}});"> </div>
+                <div style="" class="col-sm-2 light" ng-repeat="device in devicelist | orderBy:'name' track by device.name" ng-if="device.class == 'light' || device.class == 'socket'">
+                  <div ng-show="device.state.onoff == false"  hm-tap="tap(device.id, true)" hm-press="press(device)"  id="device-light" style="margin-bottom:10px;margin-top:5px;background:rgba(255,255,255,0.2);background-size: cover;-webkit-mask-size: contain;-webkit-mask-position: center center;-webkit-mask-repeat: no-repeat;width:100%;height:50px;-webkit-mask-image: url(http://192.168.2.72{{device.icon}});"> </div>
+                  <div ng-show="device.state.onoff == true"  hm-tap="tap(device.id, false)" hm-press="press(device)"  id="device-light" style="margin-bottom:10px;margin-top:5px;background:rgba(255,255,255,0.9);background-size: cover;-webkit-mask-size: contain;-webkit-mask-position: center center;-webkit-mask-repeat: no-repeat;width:100%;height:50px;-webkit-mask-image: url(http://192.168.2.72{{device.icon}});"> </div>
                   <span class="devicename">{{device.name}}</span>
                 </div>
               </div>
@@ -61,20 +59,34 @@
       </div>
     </div>
 
-    <script type="text/ng-template" id="settings_modal.html">
-        <div class="modal-header">
-            <h3 class="modal-title" style="color:#000;">Settings</h3>
-        </div>
-        <div class="modal-body">
-          <ul class="row">
-            <li class="col-sm-6 zone-item" ng-repeat="zone in zones" ng-click="saveSettings(zone.id)">
-              <span class="col-sm-12" style="color:#000;">
-              <div class="" style="margin-right:20px;float:left;-webkit-mask-size: contain;background: #000;-webkit-mask-position: center center;-webkit-mask-repeat: no-repeat;width: 26px;height: 26px;-webkit-mask-image: url(http://192.168.2.72/manager/zones/assets/icons/{{zone.icon}}.svg)"></div>
-              {{zone.name}}
-              </span>
-            </li>
-          </ul>
+
+
+
+  </body>
+
+</html>
+
+<script type="text/ng-template" id="settings_modal.html">
+    <div class="modal-header">
+        <h3 class="modal-title" style="color:#000;">Settings</h3>
+    </div>
+    <div class="modal-body">
+      <ul class="row">
+        <li class="col-sm-6 zone-item" ng-repeat="zone in zones" ng-click="saveSettings(zone.id)">
+          <span class="col-sm-12" style="color:#000;">
+          <div class="" style="margin-right:20px;float:left;-webkit-mask-size: contain;background: #000;-webkit-mask-position: center center;-webkit-mask-repeat: no-repeat;width: 26px;height: 26px;-webkit-mask-image: url(http://192.168.2.72/manager/zones/assets/icons/{{zone.icon}}.svg)"></div>
+          {{zone.name}}
+          </span>
+        </li>
+      </ul>
+    </div>
+</script>
+
+    <script type="text/ng-template" id="devicesettings_modal.html">
+        <div class="modal-body" style="color:#000;">
+          <form style="text-align:center;">
+            <h1>{{(100*thisdevice.state.dim)| number:0}}%</h1>
+            <input ng-if="thisdevice.state.dim >= 0 || thisdevice.state.dim <= 1" type="range" min="0" max="1" step="0.01" autofocus ng-model="thisdevice.state.dim" ng-change="setDimLevel()">
+          </form>
         </div>
     </script>
-  </body>
-</html>
