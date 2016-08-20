@@ -5830,6 +5830,22 @@ html body {
   -ms-user-select: none;
   user-select: none; }
 
+small {
+  font-weight: 200;
+  text-transform: uppercase; }
+
+a {
+  color: white; }
+  a:visited {
+    color: white;
+    text-decoration: none; }
+  a:hover {
+    color: white;
+    text-decoration: none; }
+  a:active {
+    color: white;
+    text-decoration: none; }
+
 #full_bg {
   height: auto;
   left: 0;
@@ -5897,6 +5913,13 @@ html body {
 
 .off {
   background: rgba(255, 255, 255, 0.2); }
+
+.sensor-info {
+  color: white;
+  font-weight: 300;
+  text-transform: uppercase; }
+  .sensor-info > .lighter {
+    color: rgba(255, 255, 255, 0.6); }
 
 [type=range] {
   -webkit-appearance: none;

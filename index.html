@@ -16,12 +16,13 @@
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.0.0/lodash.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.11/angular-filter.min.js"></script>
   <script src="lib/scripts/hammer.min.js"></script>
   <script src="lib/scripts/angular.hammer.min.js"></script>
   <script src="lib/scripts/app.js"></script>
   <script src="lib/scripts/controllers.js"></script>
 </head>
-  <body ng-controller="appController" ng-cloak>
+  <body ng-controller="mainController" ng-cloak>
   <img id="full_bg" src="/lib/images/bg.jpg">
 
 
@@ -34,33 +35,14 @@
           </div>
           <div class="menu">
             <ul>
-              <li><i class="material-icons">power</i><br/>Lights</li>
-              <li><i class="material-icons">assessment</i> Sensors</li>
+              <li><a href="#/"><i class="material-icons">power</i><br/>Lights</a></li>
+              <li><a href="#/sensors"><i class="material-icons">assessment</i> Sensors</a></li>
             </ul>
           </div>
           <a class="btn btn-clear" ng-click="openSettings()" style="position:absolute;bottom:10px;"><i class="material-icons">settings</i></a>
         </div>
         <div class="col-sm-11">
-          <div class="col-sm-12 header">
-            <h1 ng-repeat="zone in zones" ng-if="zone.id == $storage.defaultZone">{{zone.name}}</h1>
-          </div>
-          <div class="col-sm-12">
-            <div class="panel panel-clear">
-              <div class="panel-body">
-                <div style="" class="col-sm-2 light" ng-repeat="device in devicelist | orderBy:'name' track by $index" ng-if="device.class == 'light' || device.class == 'socket'">
-                  <div ng-if="device.state.dim >= 0 && device.state.dim <= 1">
-                    <div ng-show="device.state.onoff == false"  hm-tap="tap(device.id, true)" hm-press="press(device)"  id="device-light" style="margin-bottom:10px;margin-top:5px;background:rgba(255,255,255,0.2);background-size: cover;-webkit-mask-size: contain;-webkit-mask-position: center center;-webkit-mask-repeat: no-repeat;width:100%;height:50px;-webkit-mask-image: url(http://{{config.homey_ip}}{{device.icon}});"> </div>
-                    <div ng-show="device.state.onoff == true"  hm-tap="tap(device.id, false)" hm-press="press(device)"  id="device-light" style="margin-bottom:10px;margin-top:5px;background:rgba(255,255,255,0.9);background-size: cover;-webkit-mask-size: contain;-webkit-mask-position: center center;-webkit-mask-repeat: no-repeat;width:100%;height:50px;-webkit-mask-image: url(http://{{config.homey_ip}}{{device.icon}});"> </div>
-                  </div>
-                  <div ng-if="!(device.state.dim >= 0) && !(device.state.dim <= 1)">
-                    <div ng-show="device.state.onoff == false"  hm-tap="tap(device.id, true)"  id="device-light" style="margin-bottom:10px;margin-top:5px;background:rgba(255,255,255,0.2);background-size: cover;-webkit-mask-size: contain;-webkit-mask-position: center center;-webkit-mask-repeat: no-repeat;width:100%;height:50px;-webkit-mask-image: url(http://{{config.homey_ip}}{{device.icon}});"> </div>
-                    <div ng-show="device.state.onoff == true"  hm-tap="tap(device.id, false)"  id="device-light" style="margin-bottom:10px;margin-top:5px;background:rgba(255,255,255,0.9);background-size: cover;-webkit-mask-size: contain;-webkit-mask-position: center center;-webkit-mask-repeat: no-repeat;width:100%;height:50px;-webkit-mask-image: url(http://{{config.homey_ip}}{{device.icon}});"> </div>
-                  </div>
-                  <span class="devicename">{{device.name}}</span>
-                </div>
-              </div>
-            </div>
-          </div>
+            <div ng-view></div>
         </div>
       </div>
     </div>

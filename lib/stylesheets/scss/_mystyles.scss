@@ -11,6 +11,25 @@ html body{
 -ms-user-select: none;
 user-select: none;
 }
+small{
+  font-weight:200;
+  text-transform: uppercase;
+}
+a {
+    color: white;
+    &:visited {
+      color: white;
+      text-decoration: none;
+    }
+    &:hover {
+      color: white;
+      text-decoration: none;
+    }
+    &:active {
+      color: white;
+      text-decoration: none;
+    }
+  }
 #full_bg {
     height: auto;
     left: 0;
@@ -97,4 +116,13 @@ user-select: none;
 }
 .off{
   background:rgba(255,255,255,0.2);
+}
+
+.sensor-info{
+  color:white;
+  font-weight:300;
+  text-transform: uppercase;
+  > .lighter{
+    color:rgba(255,255,255,0.6);
+  }
 }

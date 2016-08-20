@@ -1,10 +1,37 @@
-## HomeyDash v2
-Second try/version of my dashboard for homey. (Made for a 7 inch android tablet)
-Edit the config.json to match your ip adress and bearer token.
-Host it on a local webserver (local because of security risks). Open the page in the browser on your android tablet, and add it to the homescreen.
-Now you should have a full screen app.
+# HomeyDash v2
 
-Instead of creating something for others to work out of the box, i am making this dashboard to suit my personal needs.
-You are free to use this code, and create your own dashboard. (It's not that hard ;) )
+## About
+Since i was missing a more "central" way of controlling my Homey, i thought it was a nice idea to create a dashboard.
+First time coding in Angular gave a few problems, thats why i started on the V2. Some parts of the first version are still available since it uses a different way to connect to the homey.
 
-NOTE: This is a work in progress. Commits may break the code.
+My idea is to have multiple dashboards. One in every room.
+Thats why you have to set the default zone on first start, every dashboard shows only the devices available in that zone.
+
+## Config
+The dashboard is written to run of a webserver.
+Most people who have a synology NAS or RPI should google on how to install and enable a webserver.
+For testing this on windows/osx/linux is XAMPP a nice way to go. (www.apachefriends.org)
+
+When you have set up your webserver you can clone the dashboard in your servers's root folder. (most of the time named htdocs or www)
+
+Now edit the config.json with your homey's ip adress and bearer token.
+You can get your bearer token in a few steps:
+  1. Go to http://my.athom.com .
+  2. Login with your account.
+  3. Right click on your homey and copy the link
+  4. Paste the link in notepad or a new tab.
+  5. Get the bearer token out of your link.
+  6. Add it to the config.json.
+  7. DONE!
+
+Open a browser and go to your webserver.
+On first start you need to select a default zone, this is saved to the local memory. So on page refresh you still are in the same zone.
+
+To run the app in fullscreen you can add it to your homescreen. (currently only working for android).
+
+## Known bugs / Issues / General answers
+HomeyDash is developed in Chrome, but is tested on the side in Safari as well.
+Athom can change the api, and this might break the dashboard.
+Since this is a work in progress, some functies may change, dissapear or not work after commits.
+
+Feel free to use this code as a base for your own dashboard. I am curious what you can make out of it...it ain't that hard ;)
