@@ -1,3 +1,5 @@
+<div class="col-sm-11">
+
 <div class="col-sm-12 header">
   <h1 ng-repeat="zone in zones" ng-if="zone.id == $storage.defaultZone">{{zone.name}}</h1>
 </div>
@@ -16,5 +18,21 @@
         <span class="devicename">{{device.name}}</span>
       </div>
     </div>
+  </div>
+</div>
+
+</div>
+
+<div class="show" id="sensorsBar" ng-if="sidebarState">
+  <h2>Sensors</h2>
+  <div style="width:100%;padding:0px;"ng-repeat="device in devicelist | orderBy:'name' track by $index" ng-if="device.class == 'sensor' || device.class == 'thermostat'">
+    <span class="devicename"><small><b>{{device.name}}</b></small></span>
+    <table style="width:100%;">
+      <tr  class="capability" ng-repeat="(key, value) in device.state">
+        <td style="width:80%;color:rgba(255,255,255,0.7);"><small>{{key | capability}}</small></td>
+        <td style="width:20%;"><small>{{value}} {{key | output}}</small></td>
+      </tr>
+    </table>
+    <br/>
   </div>
 </div>

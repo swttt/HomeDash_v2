@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="lib/stylesheets/styles.css" charset="utf-8">
   <!-- Angular must be included in the head so that the templates work properly -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
   <script src="lib/scripts/ui-bootstrap-tpls-2.0.1.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
@@ -22,7 +23,7 @@
   <script src="lib/scripts/app.js"></script>
   <script src="lib/scripts/controllers.js"></script>
 </head>
-  <body ng-controller="mainController" ng-cloak>
+  <body ng-controller="mainController" ng-cloak hm-swipeleft="swipe('left')" hm-swiperight="swipe('right')">
   <img id="full_bg" src="/lib/images/bg.jpg">
 
 
@@ -36,13 +37,12 @@
           <div class="menu">
             <ul>
               <li><a href="#/"><i class="material-icons">power</i><br/>Lights</a></li>
-              <li><a href="#/sensors"><i class="material-icons">assessment</i> Sensors</a></li>
             </ul>
           </div>
           <a class="btn btn-clear" ng-click="openSettings()" style="position:absolute;bottom:10px;"><i class="material-icons">settings</i></a>
         </div>
-        <div class="col-sm-11">
-            <div ng-view></div>
+        <div ng-view>
+
         </div>
       </div>
     </div>

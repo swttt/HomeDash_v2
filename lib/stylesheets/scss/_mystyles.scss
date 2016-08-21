@@ -118,11 +118,42 @@ a {
   background:rgba(255,255,255,0.2);
 }
 
-.sensor-info{
-  color:white;
-  font-weight:300;
+.show{
+  background-color:#416789;
+  min-height:100vh;
+  max-height:100vh;
+  overflow:hidden;
+  padding:10px;
+  -webkit-box-shadow: -6px 0px 20px 3px rgba(31,31,31,0.7);
+  -moz-box-shadow: -6px 0px 20px 3px rgba(31,31,31,0.7);
+  box-shadow: -6px 0px 20px 3px rgba(31,31,31,0.7);
+  width:300px;
+  position:fixed;
+  top:0;
+  right:0;
+  bottom:0;
+}
+.devicename{
+  font-weight:100;
   text-transform: uppercase;
-  > .lighter{
-    color:rgba(255,255,255,0.6);
-  }
+}
+.capability{
+  font-weight:100;
+  text-transform: uppercase;
+}
+.show.ng-enter{
+  right:-300px;
+  transition:0.5s linear all;
+}
+
+/* The finishing CSS styles for the enter animation */
+.show.ng-enter.ng-enter-active {
+right:0px;
+}
+.show.ng-leave {
+  transition:0.5s linear all;
+  right:0px;
+}
+.show.ng-leave.ng-leave-active {
+  right:-300px;
 }
