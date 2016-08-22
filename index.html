@@ -14,10 +14,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
   <script src="lib/scripts/ui-bootstrap-tpls-2.0.1.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.0.0/lodash.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.11/angular-filter.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.5.0/annyang.min.js"></script>
   <script src="lib/scripts/hammer.min.js"></script>
   <script src="lib/scripts/angular.hammer.min.js"></script>
   <script src="lib/scripts/app.js"></script>
@@ -25,7 +26,6 @@
 </head>
   <body ng-controller="mainController" ng-cloak hm-swipeleft="swipe('left')" hm-swiperight="swipe('right')">
   <img id="full_bg" src="/lib/images/bg.jpg">
-
 
 
     <div class="container-fluid">
@@ -62,7 +62,7 @@
       <ul class="row">
         <li class="col-sm-6 zone-item" ng-repeat="zone in zones" ng-click="saveSettings(zone.id)">
           <span class="col-sm-12" style="color:#000;">
-          <div class="" style="margin-right:20px;float:left;-webkit-mask-size: contain;background: #000;-webkit-mask-position: center center;-webkit-mask-repeat: no-repeat;width: 26px;height: 26px;-webkit-mask-image: url(http://{{config.homey_ip}}/manager/zones/assets/icons/{{zone.icon}}.svg)"></div>
+          <div class="" style="margin-right:20px;float:left;-webkit-mask-size: contain;background: #000;-webkit-mask-position: center center;-webkit-mask-repeat: no-repeat;width: 26px;height: 26px;-webkit-mask-image: url(//{{config.homey_ip}}/manager/zones/assets/icons/{{zone.icon}}.svg)"></div>
           {{zone.name}}
           </span>
         </li>
