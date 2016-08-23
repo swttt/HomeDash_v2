@@ -14,7 +14,7 @@ For testing this on windows/osx/linux is XAMPP a nice way to go. (www.apachefrie
 
 When you have set up your webserver you can clone the dashboard in your servers's root folder. (most of the time named htdocs or www)
 
-Now edit the config.json with your homey's ip adress and bearer token.
+Now edit the config.json with your homey's cloud id(the cloud id can be found in your homey's settings) and bearer token.
 You can get your bearer token in a few steps:
   1. Go to http://my.athom.com .
   2. Login with your account.
